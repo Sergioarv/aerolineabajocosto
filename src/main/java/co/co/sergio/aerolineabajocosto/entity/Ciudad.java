@@ -18,6 +18,8 @@ public class Ciudad implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idciudad;
+
+    @Column(length = 50)
     private String nombreciudad;
 
     public int getIdciudad() {

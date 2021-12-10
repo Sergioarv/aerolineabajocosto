@@ -17,9 +17,11 @@ public class Ruta implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idtuta;
+    private int idruta;
 
     private boolean escala;
+
+    private int duracion;
 
     @ManyToOne
     @JoinColumn(name="origen")
@@ -29,12 +31,28 @@ public class Ruta implements Serializable {
     @JoinColumn(name = "destino")
     private Ciudad destino;
 
-    public int getIdtuta() {
-        return idtuta;
+    public int getIdruta() {
+        return idruta;
     }
 
-    public void setIdtuta(int idtuta) {
-        this.idtuta = idtuta;
+    public void setIdruta(int idruta) {
+        this.idruta = idruta;
+    }
+
+    public boolean isEscala() {
+        return escala;
+    }
+
+    public void setEscala(boolean escala) {
+        this.escala = escala;
+    }
+
+    public int getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(int duracion) {
+        this.duracion = duracion;
     }
 
     public Ciudad getOrigen() {
@@ -51,13 +69,5 @@ public class Ruta implements Serializable {
 
     public void setDestino(Ciudad destino) {
         this.destino = destino;
-    }
-
-    public boolean isEscala() {
-        return escala;
-    }
-
-    public void setEscala(boolean escala) {
-        this.escala = escala;
     }
 }
