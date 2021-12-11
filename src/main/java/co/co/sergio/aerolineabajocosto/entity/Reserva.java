@@ -1,7 +1,7 @@
 package co.co.sergio.aerolineabajocosto.entity;
 
 import javax.persistence.*;
-import java.util.List;
+import java.io.Serializable;
 
 /**
  * @project aerolineabajocosto
@@ -11,15 +11,13 @@ import java.util.List;
  **/
 @Entity
 @Table(name = "reservas")
-public class Reserva {
+public class Reserva implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idreserva;
-
-    @OneToMany
-    @JoinColumn(name = "idreserva")
-    private List<Tiquete> tiquete;
 
     private float valorreserva;
 
@@ -29,14 +27,6 @@ public class Reserva {
 
     public void setIdreserva(int idreserva) {
         this.idreserva = idreserva;
-    }
-
-    public List<Tiquete> getTiquete() {
-        return tiquete;
-    }
-
-    public void setTiquete(List<Tiquete> tiquete) {
-        this.tiquete = tiquete;
     }
 
     public float getValorreserva() {

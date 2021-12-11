@@ -1,6 +1,10 @@
 package co.co.sergio.aerolineabajocosto.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.io.Serializable;
+import java.sql.Date;
 
 /**
  * @project aerolineabajocosto
@@ -10,29 +14,30 @@ import javax.persistence.*;
  **/
 @Entity
 @Table(name = "pasajeros")
-public class Pasajero {
+public class Pasajero implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true, nullable = false)
+@Column(unique = true)
     private int pasaporte;
 
-    @Column(length = 50)
     private String nombre;
 
-    @Column(length = 50)
     private String apellido;
 
     @Column(length = 10)
-    private int telefono;
+    private long telefono;
 
-    @Column(length = 100)
     private String email;
 
     @Column(length = 3)
     private int edad;
 
     private int millasacumuladas;
+
+    @DateTimeFormat(pattern = "%Y-%m-%d")
+    private Date fechaExpedicion;
 
     public int getPasaporte() {
         return pasaporte;
@@ -58,11 +63,11 @@ public class Pasajero {
         this.apellido = apellido;
     }
 
-    public int getTelefono() {
+    public long getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(long telefono) {
         this.telefono = telefono;
     }
 
@@ -88,5 +93,13 @@ public class Pasajero {
 
     public void setMillasacumuladas(int millasacumuladas) {
         this.millasacumuladas = millasacumuladas;
+    }
+
+    public Date getFechaExpedicion() {
+        return fechaExpedicion;
+    }
+
+    public void setFechaExpedicion(Date fechaExpedicion) {
+        this.fechaExpedicion = fechaExpedicion;
     }
 }

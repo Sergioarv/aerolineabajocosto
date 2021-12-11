@@ -1,6 +1,7 @@
 package co.co.sergio.aerolineabajocosto.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * @project aerolineabajocosto
@@ -10,7 +11,9 @@ import javax.persistence.*;
  **/
 @Entity
 @Table(name = "tiquetes")
-public class Tiquete {
+public class Tiquete implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +32,10 @@ public class Tiquete {
     private Vuelo vueloregreso;
 
     private float valortotal;
+
+    @ManyToOne
+    @JoinColumn(name = "idreserva")
+    private Reserva idreserva;
 
     public int getIdtiquete() {
         return idtiquete;
@@ -68,5 +75,13 @@ public class Tiquete {
 
     public void setValortotal(float valortotal) {
         this.valortotal = valortotal;
+    }
+
+    public Reserva getIdreserva() {
+        return idreserva;
+    }
+
+    public void setIdreserva(Reserva idreserva) {
+        this.idreserva = idreserva;
     }
 }

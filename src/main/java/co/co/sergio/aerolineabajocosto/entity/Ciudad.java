@@ -22,6 +22,8 @@ public class Ciudad implements Serializable {
     @Column(length = 50)
     private String nombreciudad;
 
+    private boolean visado;
+
     public int getIdciudad() {
         return idciudad;
     }
@@ -36,5 +38,13 @@ public class Ciudad implements Serializable {
 
     public void setNombreciudad(String nombreciudad) {
         this.nombreciudad = nombreciudad;
+    }
+
+    public boolean isVisado() {
+        return visado;
+    }
+
+    public void setVisado(boolean visado) {
+        this.visado = visado;
     }
 }

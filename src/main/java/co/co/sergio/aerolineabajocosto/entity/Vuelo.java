@@ -6,7 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Time;
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * @project bk-gestor-vuelos

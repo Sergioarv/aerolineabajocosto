@@ -4,6 +4,7 @@ import co.co.sergio.aerolineabajocosto.entity.Vuelo;
 import co.co.sergio.aerolineabajocosto.repository.VueloRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -21,6 +22,7 @@ public class VueloServiceImpl implements VueloService {
     private VueloRepository vueloRepository;
 
     @Override
+    @Transactional(readOnly = true)
     public List<Vuelo> findByFechaAndRuta(Date fecha, String idRuta) {
         return vueloRepository.findByFechaAndRuta(fecha, idRuta);
     }

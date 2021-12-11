@@ -1,28 +1,26 @@
 package co.co.sergio.aerolineabajocosto.service;
 
-import co.co.sergio.aerolineabajocosto.entity.Ciudad;
-import co.co.sergio.aerolineabajocosto.repository.CiudadRepository;
+import co.co.sergio.aerolineabajocosto.entity.Tiquete;
+import co.co.sergio.aerolineabajocosto.repository.TiqueteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 /**
  * @project aerolineabajocosto
  * @Author Sergio Abelardo Rodríguez Vásquez
  * @Email ingsergiorodriguezv@gmail.com
- * @Date 7/12/2021 16:16
+ * @Date 11/12/2021 11:37
  **/
 @Service
-public class CiudadServiceImpl implements CiudadService {
+public class TiqueteServiceImpl implements TiqueteService {
 
     @Autowired
-    private CiudadRepository ciudadRepository;
+    private TiqueteRepository tiqueteRepository;
 
     @Override
-    @Transactional(readOnly = true)
-    public List<Ciudad> findAll() {
-        return ciudadRepository.findAll();
+    @Transactional
+    public Tiquete save(Tiquete tiquete) {
+        return tiqueteRepository.save(tiquete);
     }
 }

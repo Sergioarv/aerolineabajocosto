@@ -4,6 +4,7 @@ import co.co.sergio.aerolineabajocosto.entity.Ruta;
 import co.co.sergio.aerolineabajocosto.repository.RutaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class RutaServiceImpl implements RutaService {
 
 
     @Override
+    @Transactional(readOnly = true)
     public List<Ruta> findByIdCiudadOrigen(int idciudad) {
         return rutaRepository.findByIdCiudadOrigen(idciudad);
     }
