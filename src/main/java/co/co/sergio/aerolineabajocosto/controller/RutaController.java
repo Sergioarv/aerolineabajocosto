@@ -1,6 +1,5 @@
 package co.co.sergio.aerolineabajocosto.controller;
 
-import co.co.sergio.aerolineabajocosto.entity.Ciudad;
 import co.co.sergio.aerolineabajocosto.entity.Ruta;
 import co.co.sergio.aerolineabajocosto.service.RutaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +22,13 @@ public class RutaController {
 
     @Autowired
     private RutaService rutaService;
+
+    @PostMapping
+    public ResponseEntity<?> saveAll(@RequestBody Ruta ruta){
+        Ruta data = rutaService.save(ruta);
+
+        return new ResponseEntity<>(data, HttpStatus.OK);
+    }
 
     @GetMapping("/{ciudadOrigen}")
     public ResponseEntity<List<Ruta>> findByIdCiudadOrigen(@PathVariable (value = "ciudadOrigen") int ciudadOrigen){

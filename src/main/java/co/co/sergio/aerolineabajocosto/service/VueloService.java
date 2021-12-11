@@ -14,4 +14,6 @@ import java.util.List;
 public interface VueloService {
 
     public List<Vuelo> findByFechaAndRuta(Date fecha, String idRuta);
+
+    public Vuelo save(Vuelo vuelo);
 }

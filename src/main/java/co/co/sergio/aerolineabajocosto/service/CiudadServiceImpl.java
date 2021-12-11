@@ -21,6 +21,12 @@ public class CiudadServiceImpl implements CiudadService {
     private CiudadRepository ciudadRepository;
 
     @Override
+    @Transactional
+    public Ciudad save(Ciudad ciudad) {
+        return ciudadRepository.save(ciudad);
+    }
+
+    @Override
     @Transactional(readOnly = true)
     public List<Ciudad> findAll() {
         return ciudadRepository.findAll();

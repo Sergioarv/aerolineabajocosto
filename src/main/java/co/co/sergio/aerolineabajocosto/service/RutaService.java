@@ -1,5 +1,6 @@
 package co.co.sergio.aerolineabajocosto.service;
 
+import co.co.sergio.aerolineabajocosto.entity.Ciudad;
 import co.co.sergio.aerolineabajocosto.entity.Ruta;
 
 import java.util.List;
@@ -14,4 +15,5 @@ public interface RutaService {
 
     public List<Ruta> findByIdCiudadOrigen(int idciudad);
 
+    public Ruta save(Ruta ciudad);
 }

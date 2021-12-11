@@ -5,10 +5,7 @@ import co.co.sergio.aerolineabajocosto.service.CiudadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,6 +22,13 @@ public class CiudadController {
 
     @Autowired
     private CiudadService ciudadService;
+
+    @PostMapping
+    public ResponseEntity<?> saveAll(@RequestBody Ciudad ciudad){
+        Ciudad data = ciudadService.save(ciudad);
+
+        return new ResponseEntity<>(data, HttpStatus.OK);
+    }
 
     @GetMapping
     public ResponseEntity<List<Ciudad>> getCiudad() {

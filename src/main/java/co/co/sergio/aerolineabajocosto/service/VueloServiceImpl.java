@@ -26,4 +26,9 @@ public class VueloServiceImpl implements VueloService {
     public List<Vuelo> findByFechaAndRuta(Date fecha, String idRuta) {
         return vueloRepository.findByFechaAndRuta(fecha, idRuta);
     }
+
+    @Override
+    public Vuelo save(Vuelo vuelo) {
+        return vueloRepository.save(vuelo);
+    }
 }

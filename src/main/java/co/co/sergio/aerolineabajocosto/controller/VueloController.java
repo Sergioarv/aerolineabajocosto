@@ -1,5 +1,6 @@
 package co.co.sergio.aerolineabajocosto.controller;
 
+import co.co.sergio.aerolineabajocosto.entity.Ruta;
 import co.co.sergio.aerolineabajocosto.entity.Vuelo;
 import co.co.sergio.aerolineabajocosto.service.VueloService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,15 @@ public class VueloController {
     @Autowired
     private VueloService vueloService;
 
+    @PostMapping
+    public ResponseEntity<?> saveAll(@RequestBody Vuelo vuelo){
+        Vuelo data = vueloService.save(vuelo);
+
+        return new ResponseEntity<>(data, HttpStatus.OK);
+    }
+
     @GetMapping("/buscarvuelos")
-    public ResponseEntity<?> filterVuelos(@RequestParam(value = "fechaVuelo", required = false) @DateTimeFormat(pattern="yyyy-MM-dd") Date fecha,
+    public ResponseEntity<?> filterVuelos(@RequestParam(value = "fechaVuelo", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date fecha,
                                           @RequestParam(value = "idRuta", required = false) String idRuta){
         List<Vuelo> data = null;
         HttpStatus status = null;

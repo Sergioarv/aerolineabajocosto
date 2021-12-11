@@ -1,5 +1,6 @@
 package co.co.sergio.aerolineabajocosto.service;
 
+import co.co.sergio.aerolineabajocosto.entity.Ciudad;
 import co.co.sergio.aerolineabajocosto.entity.Ruta;
 import co.co.sergio.aerolineabajocosto.repository.RutaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +21,14 @@ public class RutaServiceImpl implements RutaService {
     @Autowired
     private RutaRepository rutaRepository;
 
-
     @Override
     @Transactional(readOnly = true)
     public List<Ruta> findByIdCiudadOrigen(int idciudad) {
         return rutaRepository.findByIdCiudadOrigen(idciudad);
+    }
+
+    @Override
+    public Ruta save(Ruta ruta) {
+        return rutaRepository.save(ruta);
     }
 }

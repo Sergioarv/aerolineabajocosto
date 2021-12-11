@@ -12,5 +12,7 @@ import java.util.List;
  **/
 public interface CiudadService {
 
+    public Ciudad save(Ciudad ciudad);
+
     public List<Ciudad> findAll();
 }

@@ -24,17 +24,19 @@ public class Vuelo implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idvuelo;
 
-    @DateTimeFormat(pattern = "%Y-%m-%d")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechavuelo;
 
     private Time horavuelo;
 
+    @ColumnDefault("0")
     private double precio;
 
     @Column(length = 3)
     @ColumnDefault("250")
     private int capacidad;
 
+    @ColumnDefault("0")
     private int millas;
 
     @OneToOne
