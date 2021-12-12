@@ -17,6 +17,6 @@ import java.util.List;
 @Repository
 public interface VueloRepository extends JpaRepository<Vuelo, Integer> {
 
-    @Query(value = "select t1.idvuelo, t1.capacidad, t1.fechavuelo, t1.millas, t1.precio, t1.idRuta, t1.horavuelo from (select * from Vuelos v where v.fechavuelo::Date = to_date(:fecha, \'YYYY-MM-DD\')) t1 inner join (select * from Vuelos v where v.idRuta::int = :idRuta) t2 on t1.idvuelo = t2.idvuelo", nativeQuery = true)
+    @Query(value = "select t1.idvuelo, t1.capacidad, t1.fechavuelo, t1.millas, t1.precio, t1.idRuta, t1.horavuelo from (select * from vuelos v where v.fechavuelo = DATE_FORMAT(:fecha, \"%Y-%m-%d\")) t1 inner join (select * from vuelos v where v.idRuta = :idRuta) t2 on t1.idvuelo = t2.idvuelo", nativeQuery = true)
     public List<Vuelo> findByFechaAndRuta(Date fecha, String idRuta);
 }
